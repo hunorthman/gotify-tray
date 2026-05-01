@@ -1,4 +1,4 @@
-Gotify Desktop Tray Client (Linux / KDE Plasma)
+# Gotify Desktop Tray Client (Linux / KDE Plasma)
 Egy pehelysúlyú, Python alapú tálcaalkalmazás (tray app), amely WebSocketen keresztül kapcsolódik a Gotify szerveredhez, és valós időben, natív Linux értesítésekként (notify-send) jeleníti meg a beérkező üzeneteket.
 
 A kliens kifejezetten KDE Plasma asztali környezetre lett optimalizálva (tökéletesen fut pl. Nobara Linuxon), így hibátlanul integrálódik a rendszer értesítési központjába.
