@@ -17,6 +17,7 @@ A futtatáshoz Python 3-ra és a rendszer natív értesítő szolgáltatására 
 **Rendszercsomagok:**
 ```bash
 sudo dnf install libnotify
+```bash
 Python csomagok telepítése:
 
 Bash
