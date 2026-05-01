@@ -74,8 +74,8 @@ def on_message(ws, message):
     subprocess.run([
         'notify-send',
         '-u', 'normal',
-        '-a', 'Gotify-DebianServer',
-        '-h', 'string:desktop-entry:Gotify-DebianServer',
+        '-a', 'Gotify-Server',
+        '-h', 'string:desktop-entry:Gotify-Server',
         title,
         body,
         '-i', 'network-server'
