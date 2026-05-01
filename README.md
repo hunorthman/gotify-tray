@@ -1,4 +1,5 @@
 # Gotify Desktop Tray Client (Linux / KDE Plasma)
+
 Egy pehelysúlyú, Python alapú tálcaalkalmazás (tray app), amely WebSocketen keresztül kapcsolódik a Gotify szerveredhez, és valós időben, natív Linux értesítésekként (`notify-send`) jeleníti meg a beérkező üzeneteket.
 
 A kliens kifejezetten KDE Plasma asztali környezetre lett optimalizálva (tökéletesen fut pl. Nobara Linuxon), így hibátlanul integrálódik a rendszer értesítési központjába.
@@ -17,40 +18,40 @@ A futtatáshoz Python 3-ra és a rendszer natív értesítő szolgáltatására 
 **Rendszercsomagok:**
 ```bash
 sudo dnf install libnotify
+```
+
+**Python csomagok telepítése:**
 ```bash
-Python csomagok telepítése:
-
-Bash
 pip install websocket-client pystray Pillow
-🚀 Beállítás és Használat
-Fájlok előkészítése: Klónozd a repót, vagy tedd egy mappába a gotify-tray.py fájlt és a hozzá tartozó gotify-logo.png ikont.
+```
 
-Token és URL beállítása: Nyisd meg a gotify-tray.py fájlt egy szövegszerkesztőben, és írd át a szerver URL-jét, illetve a tokenedet.
+## 🚀 Beállítás és Használat
 
-⚠️ Fontos: A Gotify webes felületén a Clients (Kliensek) menüben kell új tokent generálnod. Ez egy C betűvel kezdődő token lesz! (A küldéshez használt, "A" betűs App tokenek ide nem használhatók).
+1. **Fájlok előkészítése:** Klónozd a repót, vagy tedd egy mappába a `gotify-tray.py` fájlt és a hozzá tartozó `gotify-logo.png` ikont.
+2. **Token és URL beállítása:** Nyisd meg a `gotify-tray.py` fájlt egy szövegszerkesztőben, és írd át a szerver URL-jét, illetve a tokenedet.
+   > ⚠️ **Fontos:** A Gotify webes felületén a **Clients** (Kliensek) menüben kell új tokent generálnod. Ez egy **`C`** betűvel kezdődő token lesz! (A küldéshez használt, "A" betűs App tokenek ide nem használhatók).
+3. **KDE Plasma integráció (Kötelező a haranghoz):** Ahhoz, hogy a KDE Plasma megjegyezze az értesítéseket és betegye őket az előzmények közé, futtasd le ezt a parancsot a terminálban. Ez létrehoz egy láthatatlan asztali bejegyzést, amit a KDE értesítési rendszere hivatalos alkalmazásként fog felismerni:
+   ```bash
+   cat <<EOF > ~/.local/share/applications/Gotify-DebianServer.desktop
+   [Desktop Entry]
+   Name=Gotify-DebianServer
+   Type=Application
+   Icon=network-server
+   NoDisplay=true
+   EOF
+   
+```
 
-KDE Plasma integráció (Kötelező a haranghoz): Ahhoz, hogy a KDE Plasma megjegyezze az értesítéseket és betegye őket az előzmények közé, futtasd le ezt a parancsot a terminálban. Ez létrehoz egy láthatatlan asztali bejegyzést, amit a KDE értesítési rendszere hivatalos alkalmazásként fog felismerni:
-
-Bash
-cat <<EOF > ~/.local/share/applications/Gotify-DebianServer.desktop
-[Desktop Entry]
-Name=Gotify-DebianServer
-Type=Application
-Icon=network-server
-NoDisplay=true
-EOF
-🔄 Automatikus indítás beállítása (Autostart)
+## 🔄 Automatikus indítás beállítása (Autostart)
 Ahhoz, hogy a gép bekapcsolásakor a háttérben azonnal induljon a kliens:
 
-Adj futtatási jogot a fájlnak a mappájában:
+1. Adj futtatási jogot a fájlnak a mappájában:
+   ```bash
+   chmod +x gotify-tray.py
+   ```
+2. Lépj be a **Rendszerbeállítások -> Automatikus indítás** (System Settings -> Autostart) menübe.
+3. Kattints a **Szkript hozzáadása** (Add Login Script) gombra.
+4. Tallózd ki a `gotify-tray.py` fájlt.
 
-Bash
-chmod +x gotify-tray.py
-Lépj be a Rendszerbeállítások -> Automatikus indítás (System Settings -> Autostart) menübe.
-
-Kattints a Szkript hozzáadása (Add Login Script) gombra.
-
-Tallózd ki a gotify-tray.py fájlt.
-
-📝 Naplózás (Logging)
-Mivel a script a háttérben fut, a beépített naplózó minden eseményt (kapcsolódás, ping, üzenet érkezése, hálózati hibák) a script mellett létrejövő gotify-tray.log fájlba rögzít. Ha bármi probléma adódna a kapcsolattal, ebben a fájlban másodpercre pontosan visszanézheted az eseményeket.
+## 📝 Naplózás (Logging)
+Mivel a script a háttérben fut, a beépített naplózó minden eseményt (kapcsolódás, ping, üzenet érkezése, hálózati hibák) a script mellett létrejövő `gotify-tray.log` fájlba rögzít. Ha bármi probléma adódna a kapcsolattal, ebben a fájlban másodpercre pontosan visszanézheted az eseményeket.
