@@ -39,8 +39,7 @@ pip install websocket-client pystray Pillow
    Icon=network-server
    NoDisplay=true
    EOF
-   
-```
+   ```
 
 ## 🔄 Automatikus indítás beállítása (Autostart)
 Ahhoz, hogy a gép bekapcsolásakor a háttérben azonnal induljon a kliens:
