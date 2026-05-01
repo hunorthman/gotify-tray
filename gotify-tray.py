@@ -60,7 +60,7 @@ def update_status(new_status, color_key):
         icon.title = f"Gotify: {status}"
         icon.menu = Menu(
             MenuItem(f"Állapot: {status}", None, enabled=False),
-            MenuItem("Gotify megnyitása", open_web, default=True), # A default=True teszi bal-klikkes akcióvá!
+            MenuItem("Gotify megnyitása", open_web, default=True),
             MenuItem("Kilépés", on_quit)
         )
 
